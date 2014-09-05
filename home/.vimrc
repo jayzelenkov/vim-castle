@@ -9,13 +9,10 @@ set nocompatible
 syntax on
 
 " Use the OS clipboard by default
-set clipboard=unnamed
+set clipboard=unnamed,unnamedplus
 
 " Enhance command-line completion
 set wildmenu
-
-" Enable filetype-specific indenting and plugins
-filetype plugin indent on
 
 " Show the best match so far as search strings are typed
 set incsearch
@@ -29,11 +26,21 @@ set ignorecase
 " Highlight the current line the cursor is on
 set cursorline
 
+" Show “invisible” characters
+set lcs=tab:▸\ ,trail:·,nbsp:_
+set list
+
+" Indentation without tabs. 2 spaces by default
+" set expandtab
+" set shiftwidth=2
+" set softtabstop=2
+
 " Flashes matching brackets or parentheses
 set showmatch
 
 " Helps with backspacing because of expandtab
-set smarttab
+" set smarttab
+" set autoindent
 
 " Don't add empty newlines at the end of files
 set binary
@@ -104,4 +111,17 @@ if exists("&relativenumber")
 	set relativenumber
 	au BufReadPost * set relativenumber
 endif
+
+" Automatic commands
+if has("autocmd")
+	" Enable file type detection
+	filetype on
+	" Treat .json files as .js
+	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+" Treat .md files as Markdown
+	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+endif
+
+" Map jj to <esc>
+imap jj <Esc>
 
