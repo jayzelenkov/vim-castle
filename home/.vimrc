@@ -1,3 +1,43 @@
+"NeoBundle Scripts-----------------------------
+if has('vim_starting')
+  set nocompatible               " Be iMproved
+
+  " Required:
+  set runtimepath+=/Users/jz/.vim/bundle/neobundle.vim/
+endif
+
+" Required:
+call neobundle#begin(expand('/Users/jz/.vim/bundle'))
+
+" Let NeoBundle manage NeoBundle
+" Required:
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+" Add or remove your Bundles here:
+" NeoBundle 'Shougo/neosnippet.vim'
+" NeoBundle 'Shougo/neosnippet-snippets'
+" NeoBundle 'tpope/vim-fugitive'
+NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'bling/vim-airline'
+NeoBundle 'kchmck/vim-coffee-script'
+NeoBundle 'tpope/vim-haml'
+" NeoBundle 'fholgado/minibufepl'
+" NeoBundle 'flazz/vim-colorschemes'
+
+" Required:
+call neobundle#end()
+
+" Required:
+filetype plugin indent on
+
+" If there are uninstalled bundles found on startup,
+" this will conveniently prompt you to install them.
+NeoBundleCheck
+"End NeoBundle Scripts-------------------------
+
+let g:airline#extensions#tabline#enabled = 1
+
 " Use solarized dark theme
 set background=dark
 colorscheme solarized
@@ -26,21 +66,18 @@ set ignorecase
 " Highlight the current line the cursor is on
 set cursorline
 
-" Show “invisible” characters
+" Show 'invisible' characters
 set lcs=tab:▸\ ,trail:·,nbsp:_
 set list
 
-" Indentation without tabs. 2 spaces by default
-" set expandtab
-" set shiftwidth=2
-" set softtabstop=2
+" Indentation without tabs. Use 2 spaces by default
+set expandtab " insert spaces instead of a tab symbol
+set tabstop=2 " number of spaces in one tab
+set shiftwidth=2 " number of space chars used for indentation
+set softtabstop=2 " make backspace delete/go back 2 spaces (e.g. like real tabs)
 
 " Flashes matching brackets or parentheses
 set showmatch
-
-" Helps with backspacing because of expandtab
-" set smarttab
-" set autoindent
 
 " Don't add empty newlines at the end of files
 set binary
@@ -120,6 +157,9 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	autocmd FileType html setlocal shiftwidth=2 tabstop=2
+	autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
+	autocmd FileType ruby setlocal expandtab
 endif
 
 " Map jj to <esc>
