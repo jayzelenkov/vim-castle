@@ -1,2 +1,0 @@
-# Add Homebew to path
-export PATH="/usr/local/bin:$PATH";
