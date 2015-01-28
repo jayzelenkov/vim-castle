@@ -3,11 +3,11 @@ if has('vim_starting')
   set nocompatible               " Be iMproved
 
   " Required:
-  set runtimepath+=/Users/jz/.vim/bundle/neobundle.vim/
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
 
 " Required:
-call neobundle#begin(expand('/Users/jz/.vim/bundle'))
+call neobundle#begin(expand('~/.vim/bundle'))
 
 " Let NeoBundle manage NeoBundle
 " Required:
@@ -22,8 +22,11 @@ NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-haml'
+NeoBundle 'fatih/vim-go'
 " NeoBundle 'fholgado/minibufepl'
 " NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'tpope/vim-fugitive.git'
 
 " Required:
 call neobundle#end()
@@ -40,7 +43,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Use solarized dark theme
 set background=dark
-colorscheme solarized
+" colorscheme solarized
+colorscheme base16-tomorrow
+let base16colorspace=256  " Access colors present in 256 colorspace
 
 " We are running Vim, not Vi
 set nocompatible
