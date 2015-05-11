@@ -32,6 +32,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'tpope/vim-repeat'
 NeoBundle 'weynhamz/vim-plugin-minibufexpl'
 NeoBundle 'edkolev/tmuxline.vim'
+NeoBundle 'mxw/vim-jsx'
 
 
 " Required:
@@ -169,6 +170,11 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
+	au BufNewFile,BufRead /private/etc/apache/* setf apache
+	au BufNewFile,BufRead /private/etc/apache/extra/* setf apache
+	au BufNewFile,BufRead /private/etc/apache/original/* setf apache
+	au BufNewFile,BufRead /private/etc/apache/other/* setf apache
+	au BufNewFile,BufRead /private/etc/apache/users/* setf apache
 	autocmd FileType html setlocal expandtab shiftwidth=4 tabstop=4
 	autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
