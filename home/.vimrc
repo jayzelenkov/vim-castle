@@ -16,17 +16,23 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 " Add or remove your Bundles here:
 " NeoBundle 'Shougo/neosnippet.vim'
 " NeoBundle 'Shougo/neosnippet-snippets'
-" NeoBundle 'tpope/vim-fugitive'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'bling/vim-airline'
 NeoBundle 'kchmck/vim-coffee-script'
 NeoBundle 'tpope/vim-haml'
 NeoBundle 'fatih/vim-go'
+NeoBundle 'sickill/vim-monokai'
 " NeoBundle 'fholgado/minibufepl'
 " NeoBundle 'flazz/vim-colorschemes'
-NeoBundle 'chriskempson/base16-vim'
+" NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'tpope/vim-fugitive.git'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'tpope/vim-repeat'
+NeoBundle 'weynhamz/vim-plugin-minibufexpl'
+NeoBundle 'edkolev/tmuxline.vim'
+
 
 " Required:
 call neobundle#end()
@@ -41,17 +47,15 @@ NeoBundleCheck
 
 let g:airline#extensions#tabline#enabled = 1
 
+" Enable syntax highlighting
+syntax on
+
 " Use solarized dark theme
 set background=dark
-" colorscheme solarized
-colorscheme base16-tomorrow
-let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme molokai
 
 " We are running Vim, not Vi
 set nocompatible
-
-" Enable syntax highlighting
-syntax on
 
 " Use the OS clipboard by default
 set clipboard=unnamed,unnamedplus
@@ -87,6 +91,9 @@ set showmatch
 " Don't add empty newlines at the end of files
 set binary
 set noeol
+
+" Don't set the title to thanks for flying vim
+set titleold=
 
 " Centralize backups, swapfiles and undo history
 set backupdir=~/.vim/backups
@@ -162,11 +169,19 @@ if has("autocmd")
 	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 " Treat .md files as Markdown
 	autocmd BufNewFile,BufRead *.md setlocal filetype=markdown
-	autocmd FileType html setlocal shiftwidth=2 tabstop=2
+	autocmd FileType html setlocal expandtab shiftwidth=4 tabstop=4
+	autocmd FileType javascript setlocal expandtab shiftwidth=2 softtabstop=2
 	autocmd FileType python setlocal expandtab shiftwidth=4 softtabstop=4
 	autocmd FileType ruby setlocal expandtab
 endif
 
 " Map jj to <esc>
 imap jj <Esc>
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)|node_modules$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ }
 
