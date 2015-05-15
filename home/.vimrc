@@ -181,6 +181,9 @@ if has("autocmd")
 	autocmd FileType ruby setlocal expandtab
 endif
 
+" Change the mapleader from \ to ,
+let mapleader=","
+
 " Map jj to <esc>
 imap jj <Esc>
 
